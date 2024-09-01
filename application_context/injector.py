@@ -1,14 +1,13 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
-from injector import Module, Binder, singleton, provider, Injector
+from injector import Module, Binder, singleton, provider
 from services.user_service import UserService
 from repositories.user_repository import UserRepository
 from mappers.user_mapper import UserMapper
-from flask import Flask
 
-# Assuming the app config has been set up properly
-def get_db_session(app: Flask):
-    engine = create_engine(app.config['SQLALCHEMY_DATABASE_URI'])
+# Create a database session factory
+def get_db_session(database_uri: str):
+    engine = create_engine(database_uri)
     session_factory = sessionmaker(bind=engine)
     return scoped_session(session_factory)
 
@@ -20,8 +19,9 @@ class AppModule(Module):
 
     @singleton
     @provider
-    def provide_db_session(self, app: Flask) -> scoped_session:
-        return get_db_session(app)
+    def provide_db_session(self) -> scoped_session:
+        from flask import current_app
+        return get_db_session(current_app.config['SQLALCHEMY_DATABASE_URI'])
 
 def configure_injector(binder: Binder):
     binder.install(AppModule)
