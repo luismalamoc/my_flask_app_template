@@ -1,6 +1,8 @@
+import os
+
 from flask import Flask
 from injector import Injector, singleton, Binder
-from config import app_config
+from config import development, production, testing
 from application_context.injector import configure_injector
 from resources.user_resource import UserResource
 from sqlalchemy.orm import scoped_session
@@ -8,7 +10,14 @@ from models import Base  # Import your base model class
 
 def create_app():
     app = Flask(__name__)
-    app.config.from_object(app_config)
+    # Load the appropriate config based on the FLASK_ENV environment variable
+    env = os.getenv('FLASK_ENV', 'development')
+    if env == 'production':
+        app.config.from_object(production)
+    elif env == 'testing':
+        app.config.from_object(testing)
+    else:
+        app.config.from_object(development)
 
     # Manually create the Injector and configure it
     injector = Injector([configure_injector])

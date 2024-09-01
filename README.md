@@ -11,6 +11,7 @@ This project is a modular Flask application with a clean separation of concerns,
 - [Running the Application](#running-the-application)
 - [Usage](#usage)
 - [Extending the Application](#extending-the-application)
+- [Docker usage](#docker-usage)
 
 ## Project Structure
 
@@ -151,6 +152,14 @@ To add a new feature (e.g., managing posts):
 4. Create `post_schema.py` in `schemas/`.
 5. Create `post_mapper.py` in `mappers/`.
 6. Register the new routes in `app.py`.
+
+## Docker usage
+
+```
+docker build -t my-flask-app .
+
+docker run -p 5000:5000 my-flask-app
+```
 
 ## Contributing
 
