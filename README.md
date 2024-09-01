@@ -123,7 +123,7 @@ Configuration files are located in the `config/` directory. You can modify these
 
 2. **Run the Flask application**:
    ```bash
-   python app.py
+   python -m app.app
    ```
 
    The application will be available at `http://localhost:5000`.
@@ -175,15 +175,15 @@ To add a new feature (e.g., managing posts):
 ## Running tests
 
 ```bash
-pytest
+pytest tests/
 ```
 
 ## Docker usage
 
 ```
-docker build -t my-flask-app .
+docker build -t my-flask-app-template .
 
-docker run -p 5000:5000 my-flask-app
+docker run -p 5000:5000 my-flask-app-template
 ```
 
 ## Contributing

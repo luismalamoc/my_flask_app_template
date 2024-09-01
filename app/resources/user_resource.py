@@ -1,4 +1,3 @@
-from flask import jsonify
 from injector import inject
 from app.services.user_service import UserService
 

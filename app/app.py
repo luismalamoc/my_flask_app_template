@@ -2,12 +2,13 @@ import os
 
 from flask import Flask
 from injector import Injector
-from app.config import development, testing
-from app.config import production
-from app.application_context import configure_injector
-from app.resources import UserResource
+
+from .application_context.injector import configure_injector
+from .config import development, testing, production
 from sqlalchemy.orm import scoped_session
-from app.models import Base  # Import your base model class
+from .models import Base  # Import your base model class
+from .resources.user_resource import UserResource
+
 
 def create_app():
     app = Flask(__name__)
