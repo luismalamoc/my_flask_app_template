@@ -1,4 +1,4 @@
-from models.user import User
+from app.models.user import User
 from sqlalchemy.orm import scoped_session
 from injector import inject
 

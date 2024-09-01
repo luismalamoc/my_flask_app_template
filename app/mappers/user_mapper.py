@@ -1,5 +1,5 @@
-from models.user import User
-from schemas.user_schema import UserSchema
+from app.models.user import User
+from app.schemas.user_schema import UserSchema
 
 class UserMapper:
     def to_schema(self, user: User) -> UserSchema:

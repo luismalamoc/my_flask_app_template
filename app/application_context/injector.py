@@ -1,9 +1,9 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 from injector import Module, Binder, singleton, provider
-from services.user_service import UserService
-from repositories.user_repository import UserRepository
-from mappers.user_mapper import UserMapper
+from app.services.user_service import UserService
+from app.repositories.user_repository import UserRepository
+from app.mappers.user_mapper import UserMapper
 
 # Create a database session factory
 def get_db_session(database_uri: str):

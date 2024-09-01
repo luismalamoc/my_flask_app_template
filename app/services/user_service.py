@@ -1,5 +1,5 @@
-from repositories.user_repository import UserRepository
-from mappers.user_mapper import UserMapper
+from app.repositories.user_repository import UserRepository
+from app.mappers.user_mapper import UserMapper
 from injector import inject
 
 class UserService:

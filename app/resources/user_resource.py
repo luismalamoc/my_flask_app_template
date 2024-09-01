@@ -1,6 +1,6 @@
 from flask import jsonify
 from injector import inject
-from services.user_service import UserService
+from app.services.user_service import UserService
 
 class UserResource:
     @inject
@@ -13,4 +13,4 @@ class UserResource:
 
     def get_user(self, user_id):
         user = self.user_service.get_user(user_id)
-        return jsonify(user), 200
+        return user.json(), 200

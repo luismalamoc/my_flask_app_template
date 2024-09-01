@@ -11,42 +11,61 @@ This project is a modular Flask application with a clean separation of concerns,
 - [Running the Application](#running-the-application)
 - [Usage](#usage)
 - [Extending the Application](#extending-the-application)
+- [Running tests](#running-tests)
 - [Docker usage](#docker-usage)
 
 ## Project Structure
 
 ```
-my_flask_app/
-├── app.py
-├── config/
+my_flask_app_template/
+├── app/
 │   ├── __init__.py
-│   ├── development.py
-│   ├── production.py
-│   └── testing.py
-├── application_context/
+│   ├── app.py
+│   ├── config/
+│   │   ├── __init__.py
+│   │   ├── development.py
+│   │   ├── production.py
+│   │   └── testing.py
+│   ├── application_context/
+│   │   ├── __init__.py
+│   │   └── injector.py
+│   ├── resources/
+│   │   ├── __init__.py
+│   │   └── user_resource.py
+│   ├── services/
+│   │   ├── __init__.py
+│   │   └── user_service.py
+│   ├── repositories/
+│   │   ├── __init__.py
+│   │   ├── base.py
+│   │   └── user_repository.py
+│   ├── schemas/
+│   │   ├── __init__.py
+│   │   └── user_schema.py
+│   ├── mappers/
+│   │   ├── __init__.py
+│   │   └── user_mapper.py
+│   ├── models/
+│   │   ├── __init__.py
+│   │   └── user.py
+├── tests/
 │   ├── __init__.py
-│   └── injector.py
-├── resources/
-│   ├── __init__.py
-│   └── user_resource.py
-├── services/
-│   ├── __init__.py
-│   └── user_service.py
-├── repositories/
-│   ├── __init__.py
-│   ├── base.py
-│   └── user_repository.py
-├── schemas/
-│   ├── __init__.py
-│   └── user_schema.py
-├── mappers/
-│   ├── __init__.py
-│   └── user_mapper.py
-├── models/
-│   ├── __init__.py
-│   └── user.py
+│   ├── repositories/
+│   │   ├── __init__.py
+│   │   └── test_user_repository.py
+│   ├── services/
+│   │   ├── __init__.py
+│   │   └── test_user_service.py
+│   ├── mappers/
+│   │   ├── __init__.py
+│   │   └── test_user_mapper.py
+│   ├── resources/
+│   │   ├── __init__.py
+│   │   └── test_user_resource.py
+├── Dockerfile
 ├── requirements.txt
 └── .env
+
 ```
 
 ### Directories
@@ -152,6 +171,12 @@ To add a new feature (e.g., managing posts):
 4. Create `post_schema.py` in `schemas/`.
 5. Create `post_mapper.py` in `mappers/`.
 6. Register the new routes in `app.py`.
+
+## Running tests
+
+```bash
+pytest
+```
 
 ## Docker usage
 
